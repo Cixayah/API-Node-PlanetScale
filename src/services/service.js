@@ -15,12 +15,12 @@ module.exports = {
         return new Promise((aceito, rejeitado) => {
             db.query('SELECT * FROM carros WHERE codigo = ?', [codigo], (error, results) => {
                 if (error) { rejeitado(error); return; }
-                if (results.lenght > 0) {
+                if (results.length > 0) {
                     aceito(results[0]);
                 } else {
                     aceito(false);
                 }
-            })
-        })
+            });
+        });
     }
 };
