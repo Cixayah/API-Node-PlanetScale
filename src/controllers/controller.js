@@ -42,5 +42,23 @@ module.exports = {
         }
         res.json(json);
 
+    },
+    alter: async (req, res) => {
+        let json = { error: '', result: {} };
+        let codigo = req.params.codigo;
+        let modelo = req.body.modelo;
+        let placa = req.body.placa;
+
+        if (codigo && modelo && placa) {
+            await service.alter(codigo, modelo, placa);
+            json.result = {
+                codigo,
+                modelo,
+                placa
+            };
+        } else {
+            json.error = 'Campos não enviados';
+        }
+        res.json(json);
     }
 }
