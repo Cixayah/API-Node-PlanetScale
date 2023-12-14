@@ -12,5 +12,17 @@ module.exports = {
             })
         }
         res.json(json);
+    },
+
+    getOne: async(req,res) => {
+        let json = { error: '', result: {} };
+
+        let codigo = req.params.codigo;
+        let carro = await service.getOne(codigo);
+        if(carro){
+            json.result = carro;
+        }
+        res.json(json);
+
     }
 }
